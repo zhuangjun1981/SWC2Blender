@@ -51,7 +51,7 @@ def read_some_data(context, filepath):
             spline = tracer.splines.new('BEZIER')
 
             curve = bpy.data.objects.new('curve',tracer)
-            bpy.context.scene.objects.link(curve)
+            bpy.context.collection.objects.link(curve)
             
             # render ready curve
             tracer.resolution_u = 8
@@ -113,12 +113,12 @@ def menu_func_import(self, context):
 
 def register():
     bpy.utils.register_class(ImportSWCData)
-    bpy.types.INFO_MT_file_import.append(menu_func_import)
+    bpy.types.TOPBAR_MT_file_import.append(menu_func_import)
 
 
 def unregister():
     bpy.utils.unregister_class(ImportSWCData)
-    bpy.types.INFO_MT_file_import.remove(menu_func_import)
+    bpy.types.TOPBAR_MT_file_import.remove(menu_func_import)
 
 
 if __name__ == "__main__":
